@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsadikaj <lsadikaj@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 15:24:13 by lsadikaj          #+#    #+#             */
-/*   Updated: 2024/10/24 14:19:40 by lsadikaj         ###   ########.fr       */
+/*   Created: 2024/10/24 15:43:35 by lsadikaj          #+#    #+#             */
+/*   Updated: 2024/10/24 15:46:22 by lsadikaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdio.h>
-# include <stdarg.h>
-# include <stdlib.h>
+int	ft_print_ptr(void *ptr)
+{
+	unsigned long	adress;
+	int				printed_chars;
 
-int		ft_printf(const char *format, ...);
-int		check_format(char format, va_list args);
-
-#endif
+	adress = (unsigned long)ptr;
+	ft_print_str("0x");
+	printed_chars = 2;
+	printed_chars += ft_print_hex(address, 'x');
+	return (printed_chars);
+}
