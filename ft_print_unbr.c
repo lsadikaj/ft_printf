@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_print_unbr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsadikaj <lsadikaj@student.42lausanne.ch > +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 14:20:54 by lsadikaj          #+#    #+#             */
-/*   Updated: 2024/10/28 20:10:26 by lsadikaj         ###   ########.fr       */
+/*   Created: 2024/10/28 19:50:12 by lsadikaj          #+#    #+#             */
+/*   Updated: 2024/10/28 20:21:24 by lsadikaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_str(const char *str)
+int	ft_print_unbr(unsigned int n)
 {
-	int	len;
+	int	count;
 
-	if (!str)
-	{
-		ft_putstr("(null)");
-		return ;
-	}
-	len = 0;
-	while (str[len])
-	{
-		ft_putchar(str[len]);
-		len++;
-	}
-	return (len);
+	count = 0;
+	if (n >= 10)
+		count += ft_print_unbr(n / 10);
+	count += ft_print_char((n % 10) + 0);
+	return (count);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsadikaj <lsadikaj@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: lsadikaj <lsadikaj@student.42lausanne.ch > +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:35:04 by lsadikaj          #+#    #+#             */
-/*   Updated: 2024/10/24 15:44:16 by lsadikaj         ###   ########.fr       */
+/*   Updated: 2024/10/28 20:21:26 by lsadikaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ static int	check_format(char format, va_list args)
 
 	printed_chars = 0;
 	if (format == 'c')
-		printed_chars = printed_chars + ft_print_char((char)va_arg(args, int));
+		printed_chars += ft_print_char((char)va_arg(args, int));
 	else if (format == 's')
-		printed_chars = printed_chars + ft_print_str(va_arg(args, char *));
+		printed_chars += ft_print_str(va_arg(args, char *));
 	else if (format == 'p')
-		printed_chars = printed_chars + ft_print_ptr(va_arg(args, void *));
+		printed_chars += ft_print_ptr(va_arg(args, void *));
 	else if (format == 'd' || format == 'i')
-		printed_chars = printed_chars + ft_print_nbr(va_arg(args, int));
+		printed_chars += ft_print_nbr(va_arg(args, int));
 	else if (format == 'u')
-		printed_chars = printed_chars + ft_print_unbr(va_arg(args, unsigned int));
+		printed_chars += ft_print_unbr(va_arg(args, unsigned int));
 	else if (format == 'x' || format == 'X')
-		printed_chars = printed_chars + ft_print_hex(va_arg(args, unsigned int), format);
+		printed_chars += ft_print_hex(va_arg(args, unsigned int), format);
 	else if (format == '%')
-		printed_chars = printed_chars + ft_print_char('%');
+		printed_chars += ft_print_char('%');
 	else
-		printed_chars = printed_chars + ft_print_char(format);
+		printed_chars += ft_print_char(format);
 	return (printed_chars);
 }
 
