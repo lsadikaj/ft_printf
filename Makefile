@@ -6,16 +6,16 @@
 #    By: lsadikaj <lsadikaj@student.42lausanne.ch > +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 12:49:16 by lsadikaj          #+#    #+#              #
-#    Updated: 2024/10/25 10:48:01 by lsadikaj         ###   ########.fr        #
+#    Updated: 2024/10/29 09:45:39 by lsadikaj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS = ft_printf.c ft_printf.h ft_print_char.c ft_print_str.c /
-		ft_print_nbr.c ft_print_ptr.c 
+SRCS = ft_printf.c ft_print_char.c ft_print_str.c \
+		ft_print_nbr.c ft_print_ptr.c ft_print_hex.c ft_print_unbr.c
 
-OBJS = $(SRC:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -28,7 +28,7 @@ $(NAME): $(OBJS)
 clean:
 	rm -f $(OBJS)
 
-fclean:
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: lsadikaj <lsadikaj@student.42lausanne.ch > +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:35:04 by lsadikaj          #+#    #+#             */
-/*   Updated: 2024/10/28 20:21:26 by lsadikaj         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:22:41 by lsadikaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ static int	check_format(char format, va_list args)
 		printed_chars += ft_print_hex(va_arg(args, unsigned int), format);
 	else if (format == '%')
 		printed_chars += ft_print_char('%');
-	else
-		printed_chars += ft_print_char(format);
 	return (printed_chars);
 }
 

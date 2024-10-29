@@ -6,7 +6,7 @@
 /*   By: lsadikaj <lsadikaj@student.42lausanne.ch > +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:50:12 by lsadikaj          #+#    #+#             */
-/*   Updated: 2024/10/28 20:21:24 by lsadikaj         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:29:41 by lsadikaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	ft_print_unbr(unsigned int n)
 {
-	int	count;
+	int	printed_chars;
 
-	count = 0;
+	printed_chars = 0;
 	if (n >= 10)
-		count += ft_print_unbr(n / 10);
-	count += ft_print_char((n % 10) + 0);
-	return (count);
+		printed_chars += ft_print_unbr(n / 10);
+	printed_chars += ft_print_char((n % 10) + '0');
+	return (printed_chars);
 }
