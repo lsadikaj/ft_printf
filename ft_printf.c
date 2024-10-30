@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsadikaj <lsadikaj@student.42lausanne.ch > +#+  +:+       +#+        */
+/*   By: lsadikaj <lsadikaj@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:35:04 by lsadikaj          #+#    #+#             */
-/*   Updated: 2024/10/29 10:22:41 by lsadikaj         ###   ########.fr       */
+/*   Updated: 2024/10/30 12:10:27 by lsadikaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,43 @@ static int	check_format(char format, va_list args)
 	return (printed_chars);
 }
 
+static int	handle_format(const char **format, va_list args)
+{
+	int	printed_chars;
+
+	printed_chars = 0;
+	if (**format == '%' && *(*format + 1))
+	{
+		(*format)++;
+		printed_chars = check_format(**format, args);
+	}
+	else
+	{
+		if (ft_print_char(**format) == -1)
+			return (-1);
+		printed_chars = 1;
+	}
+	(*format)++;
+	return (printed_chars);
+}
+
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		printed_chars;
+	int		current_printed;
 
 	printed_chars = 0;
 	va_start(args, format);
 	while (*format)
 	{
-		if (*format == '%' && *(format + 1))
+		current_printed = handle_format(&format, args);
+		if (current_printed == -1)
 		{
-			format++;
-			printed_chars += check_format(*format, args);
+			va_end(args);
+			return (-1);
 		}
-		else
-		{
-			ft_print_char(*format);
-			printed_chars++;
-		}
-		format++;
+		printed_chars += current_printed;
 	}
 	va_end(args);
 	return (printed_chars);
