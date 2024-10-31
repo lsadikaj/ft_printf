@@ -6,7 +6,7 @@
 /*   By: lsadikaj <lsadikaj@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 20:16:28 by lsadikaj          #+#    #+#             */
-/*   Updated: 2024/10/30 11:47:27 by lsadikaj         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:20:10 by lsadikaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_print_hex(unsigned long n, char format)
 {
 	char	*base;
 	int		printed_chars;
-	int		res;
+	int		current_printed;
 
 	printed_chars = 0;
 	if (format == 'x')
@@ -25,10 +25,10 @@ int	ft_print_hex(unsigned long n, char format)
 		base = "0123456789ABCDEF";
 	if (n >= 16)
 	{
-		res = ft_print_hex(n / 16, format);
-		if (res == -1)
+		current_printed = ft_print_hex(n / 16, format);
+		if (current_printed == -1)
 			return (-1);
-		printed_chars += res;
+		printed_chars += current_printed;
 	}
 	if (ft_print_char(base[n % 16]) == -1)
 		return (-1);

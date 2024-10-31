@@ -6,7 +6,7 @@
 /*   By: lsadikaj <lsadikaj@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:23:15 by lsadikaj          #+#    #+#             */
-/*   Updated: 2024/10/30 11:46:02 by lsadikaj         ###   ########.fr       */
+/*   Updated: 2024/10/31 10:33:19 by lsadikaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_print_positive_nbr(unsigned int n)
 int	ft_print_nbr(int n)
 {
 	int	printed_chars;
-	int	res;
+	int	current_printed;
 
 	printed_chars = 0;
 	if (n == -2147483648)
@@ -50,9 +50,9 @@ int	ft_print_nbr(int n)
 		n = -n;
 		printed_chars++;
 	}
-	res = ft_print_positive_nbr(n);
-	if (res == -1)
+	current_printed = ft_print_positive_nbr(n);
+	if (current_printed == -1)
 		return (-1);
-	printed_chars += res;
+	printed_chars += current_printed;
 	return (printed_chars);
 }
